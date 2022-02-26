@@ -19,3 +19,11 @@ Route::get('/', function () {
 Route::get('/reservation', function () {
     return view('reservation');
 });
+
+Route::get('/detail', function () {
+    return view('detail_screen');
+});
+
+Route::get('/done', function () {
+    return view('done');
+});
