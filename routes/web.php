@@ -13,7 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/detail', function () {
-    return view('/detail_screen');
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/reservation', function () {
+    return view('reservation');
 });
 
+Route::get('/detail', function () {
+    return view('detail_screen');
+});
+
+Route::get('/register', function(){
+    return view('register');
+});
+
+Route::get('/login', function(){
+    return view('login');
+});
+
+Route::get('/edit', function(){
+    return view('edit');
+});
+
+Route::get('/done', function () {
+    return view('done');
+});
