@@ -5,40 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('stylesheet.css') }}" >
     <title>予約画面 | movie-booking</title>
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container"></div>
+    <div class="row justify-content-center">
         <div class="main-header">
             <h1 class="p-2">予約画面</h1>
         </div>
+    </div>    
 
-        <!-- 予約メッセージ -->
-        <div class="row justify-content-center">
-            <div class="massage py-4">
-                座席を選択して下さい。
-            </div>
+    <!-- 予約メッセージ -->
+    <div class="row justify-content-center">
+        <div class="col-6 mb-4 py-4">
+            座席を選択して下さい。
         </div>
+    </div>
 
-        <!-- アイコン説明 -->
-        <div class="row justify-content-center">
-            <div class="col-6 mb-4">
-                <p class="">アイコン説明</p>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item flex-fill"><img src="{{ asset('img/seat_1.gif') }}" alt=""> 空席</li>
-                    <li class="list-group-item flex-fill"><img src="{{ asset('img/seat_2.gif') }}" alt=""> 購入済み</li>
-                </ul>
-            </div>
+    <!-- アイコン説明 -->
+    <div class="row justify-content-center">
+        <div class="col-6 mb-4">
+            <p class="">アイコン説明</p>
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item flex-fill"><img src="{{ asset('img/seat_1.gif') }}" alt=""> 空席</li>
+                <li class="list-group-item flex-fill"><img src="{{ asset('img/seat_2.gif') }}" alt=""> 購入済み</li>
+            </ul>
         </div>
+    </div>
 
-        <!-- 席 -->
-        <div class="row justify-content-center">
-            <div class="screen-box bg-secondary p-1">
+    <!-- 席 -->
+    <div class="row justify-content-center">
+        <div class="screen-box bg-secondary col-3 p-1">
                 <p class="screen-name m-4">SCREEN 1</p>
-                <div class="screen-box-inline p-4">
+                <div class="screen-box-inline col-2 p-4">
                     <table>
                         <!-- 1列目 -->
                         <tr>
@@ -212,13 +214,13 @@
                         </tr>
                     </table>
                 </div>
-            </div>
-        </div>
-
-        <!-- 購入ボタン -->
-        <div class="row justify-content-center">
-            <button type="button" class="btn btn-outline-secondary m-5">購入</button>
         </div>
     </div>
+
+    <!-- 購入ボタン -->
+    <div class="row justify-content-center">
+        <button type="button" class="btn btn-outline-secondary col-1 my-4">購入</button>
+    </div>
+    
 </body>
 </html>
