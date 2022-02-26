@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/detail', function () {
-    return view('/detail_screen');
+    return view('detail_screen');
 });
 
+Route::get('/done', function () {
+    return view('done');
+});
