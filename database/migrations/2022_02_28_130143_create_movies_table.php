@@ -23,7 +23,6 @@ class CreateMoviesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('img_pass');
-            $table->integer('status')->unsigned()->nullable()->comment('会員登録ステータス 0: active" 1: deleted');
             $table->timestamps();
         });
     }

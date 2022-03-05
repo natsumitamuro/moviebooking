@@ -15,7 +15,6 @@ class CreateSeatsTable extends Migration
     {
         Schema::create('seats', function (Blueprint $table) {
             $table->id();
-            $table->integer('screen_no');
             $table->integer('schedule_id');
             $table->integer('row_id');
             $table->integer('status')->unsigned()->nullable()->comment('予約のステータス 0: active" 1: deleted');
