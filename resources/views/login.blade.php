@@ -19,8 +19,8 @@
         <h3 class="card-title my-5 text-center">ログイン画面</h3>
 
 
-        <form class="" method="POST" action="">
-
+        <form class="" method="POST" action="/login">
+        @csrf
             <div class="col-md-3 mx-auto">
                 <p class="mb-3">メールアドレス</p>
                 <input type="text" class="form-control mb-3" name="email" required>
