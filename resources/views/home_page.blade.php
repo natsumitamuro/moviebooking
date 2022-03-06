@@ -7,28 +7,28 @@
             <h1>上映映画情報</h1>
         </div>
         <div class="col-5">
-            <img src="/movie-booking/public/image/sample_movie.png" alt="映画の画像" class="border"><br>
+            <img src="{{ asset('img/sample_movie.png') }}" alt="映画の画像" class="border"><br>
             <b>作品名</b><br>
-            <a href="#">映画の詳細</a><br>
-            <a href="#">予約する</a>
+            <a href="/detail">映画の詳細</a><br>
+            <a href="/reservation">予約する</a>
         </div>
         <div class="col-5">
-            <img src="/movie-booking/public/image/sample_movie.png" alt="映画の画像" class="border"><br>
+            <img src="{{ asset('img/sample_movie.png') }}" alt="映画の画像" class="border"><br>
             <b>作品名</b><br>
-            <a href="#">映画の詳細</a><br>
-            <a href="#">予約する</a>
+            <a href="/detail">映画の詳細</a><br>
+            <a href="/reservation">予約する</a>
         </div>
         <div class="col-5">
-            <img src="/movie-booking/public/image/sample_movie.png" alt="映画の画像" class="border"><br>
+            <img src="{{ asset('img/sample_movie.png') }}" alt="映画の画像" class="border"><br>
             <b>作品名</b><br>
-            <a href="#">映画の詳細</a><br>
-            <a href="#">予約する</a>
+            <a href="/detail">映画の詳細</a><br>
+            <a href="/reservation">予約する</a>
         </div>
         <div class="col-5">
-            <img src="/movie-booking/public/image/sample_movie.png" alt="映画の画像" class="border"><br>
+            <img src="{{ asset('img/sample_movie.png') }}" alt="映画の画像" class="border"><br>
             <b>作品名</b><br>
-            <a href="#">映画の詳細</a><br>
-            <a href="#">予約する</a>
+            <a href="/detail">映画の詳細</a><br>
+            <a href="/reservation">予約する</a>
         </div>
     </div>
 @endsection

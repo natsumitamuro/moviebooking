@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/reservation', function () {
     return view('reservation');
-});
+})->middleware('auth');
 
 Route::get('/detail', function () {
     return view('detail_screen');
@@ -39,4 +39,13 @@ Route::get('/edit', function(){
 
 Route::get('/done', function () {
     return view('done');
+})->middleware('auth');
+
+Route::get('/home', function () {
+    return view('home_page');
 });
+
+Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
+
+Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
+
