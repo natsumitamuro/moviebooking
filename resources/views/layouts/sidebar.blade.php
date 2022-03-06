@@ -3,15 +3,17 @@
         <div class="sticky-top">
             <div class="sub">
             <div class="text-center">
-                <?php if (isset($_GET['user_id'])) : ?>
+                
+                @auth
                     <b>ユーザー名</b><br>
-                    <a href="#">プロフィール編集画面</a><br>
-                    <a href="#">ログアウト</a>
-                <?php else : ?>
+                    <a href="/edit">プロフィール編集画面</a><br>
+                    <a href="/logout">ログアウト</a>
+                @else
                     <b>新規登録をしよう</b><br>
-                    <a href="#">新規登録画面</a><br>
-                    <a href="#">登録済みの方はこちら</a>
-                <?php endif ; ?>
+                    <a href="/register">新規登録画面</a><br>
+                    <a href="/login">登録済みの方はこちら</a>
+                @endauth
+                
             </div>
             </div>
         </div>
