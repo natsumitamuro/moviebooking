@@ -17,9 +17,11 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
             $table->string('password');
-            $table->integer('classification')->unsigned()->comment('区分 0:大人 1: 大学生/専門学生 2: 中学生以下');
-            $table->integer('gender')->unsigned()->comment('性別 0:男性 1:女性');
+            $table->integer('classification')->nullable()->unsigned()->comment('区分 0:大人 1: 大学生/専門学生 2: 中学生以下');
+            $table->integer('gender')->unsigned()->nullable()->comment('性別 0:男性 1:女性');
             $table->integer('status')->unsigned()->nullable()->comment('会員登録ステータス 0: active" 1: deleted');
             $table->timestamps();
         });
