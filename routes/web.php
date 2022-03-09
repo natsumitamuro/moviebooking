@@ -39,3 +39,16 @@ Route::get('/edit', function(){
 Route::get('/done', function () {
     return view('done');
 });
+
+Route::get('/home_page', function () {
+    return view('home_page');
+});
+
+
+Route::post('/register',[App\Http\Controllers\UserController::class,'register'])->name('register');
+
+Route::get('/register',[App\Http\Controllers\UserController::class,'getRegister'])->name('getRegister');
+
+Route::get('/edit/{id}',[App\Http\Controllers\UserController::class,'edit'])->name('edit');
+
+Route::post('/edit/{id}',[App\Http\Controllers\UserController::class,'update'])->name('update');
