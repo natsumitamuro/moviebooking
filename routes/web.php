@@ -48,3 +48,5 @@ Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
 
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
 
+Route::get('/home',[App\Http\Controllers\HomeController::class,'getmovies'])->name('movie');
+

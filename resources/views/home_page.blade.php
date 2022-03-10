@@ -19,36 +19,20 @@
                     <b>新規登録をしよう</b><br>
                     <a href="/register">新規登録画面</a><br>
                     <a href="/login">登録済みの方はこちら</a>
-                <?php endif ; ?>
+                @endauth
             </div>
         </div>
         <div class="col-10">
             <h1>上映映画情報</h1>
         </div>
+        @foreach($movies as $movie)
         <div class="col-5">
-            <img src="{{ asset('img/sample_movie.png') }}" alt="映画の画像" class="border"><br>
-            <b>作品名</b><br>
+            <img src="{{ $movie->img_pass }}" alt="映画の画像" class="border"><br>
+            <b>{{ $movie->name }}</b><br>
             <a href="/detail">映画の詳細</a><br>
             <a href="/reservation">予約する</a>
         </div>
-        <div class="col-5">
-            <img src="{{ asset('img/sample_movie.png') }}" alt="映画の画像" class="border"><br>
-            <b>作品名</b><br>
-            <a href="/detail">映画の詳細</a><br>
-            <a href="/reservation">予約する</a>
-        </div>
-        <div class="col-5">
-            <img src="{{ asset('img/sample_movie.png') }}" alt="映画の画像" class="border"><br>
-            <b>作品名</b><br>
-            <a href="/detail">映画の詳細</a><br>
-            <a href="/reservation">予約する</a>
-        </div>
-        <div class="col-5">
-            <img src="{{ asset('img/sample_movie.png') }}" alt="映画の画像" class="border"><br>
-            <b>作品名</b><br>
-            <a href="/detail">映画の詳細</a><br>
-            <a href="/reservation">予約する</a>
-        </div>
+        @endforeach
       </div>
     </div>
 </body>
