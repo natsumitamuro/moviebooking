@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('stylesheet.css') }}" >
-    <title>予約画面 | movie-booking</title>
-</head>
-
-<body>
+@extends('layouts.layout')
+@section('title','予約画面')
+@include('layouts.sidebar')
+@section('main')
     <div class="container"></div>
     <div class="row justify-content-center">
         <div class="main-header">
@@ -38,9 +29,9 @@
 
     <!-- 席 -->
     <div class="row justify-content-center">
-        <div class="screen-box bg-secondary col-3 p-1">
+        <div class="screen-box bg-secondary col-6 p-1">
                 <p class="screen-name m-4">SCREEN 1</p>
-                <div class="screen-box-inline col-2 p-4">
+                <div class="screen-box-inline p-4">
                     <table>
                         <!-- 1列目 -->
                         <tr>
@@ -221,6 +212,4 @@
     <div class="row justify-content-center">
         <button type="button" class="btn btn-outline-secondary col-1 my-4">購入</button>
     </div>
-    
-</body>
-</html>
+@endsection  
