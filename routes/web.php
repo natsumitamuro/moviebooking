@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home_page');
 });
+
 Route::get('/reservation', function () {
     return view('reservation');
-});
+})->middleware('auth');
 
 Route::get('/detail', function () {
     return view('detail_screen');
@@ -38,12 +39,11 @@ Route::get('/edit', function(){
 
 Route::get('/done', function () {
     return view('done');
-});
+})->middleware('auth');
 
-Route::get('/home_page', function () {
+Route::get('/home', function () {
     return view('home_page');
 });
-
 
 Route::post('/register',[App\Http\Controllers\UserController::class,'register'])->name('register');
 
@@ -52,3 +52,8 @@ Route::get('/register',[App\Http\Controllers\UserController::class,'getRegister'
 Route::get('/edit/{id}',[App\Http\Controllers\UserController::class,'edit'])->name('edit');
 
 Route::post('/edit/{id}',[App\Http\Controllers\UserController::class,'update'])->name('update');
+
+Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
+
+Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
+
