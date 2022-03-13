@@ -23,7 +23,7 @@ class TestDataSeeder extends Seeder
         // make movies
         \App\Models\ScheduledMovie::factory()->count(20)->create()->each(function ($scheduledMovie){
             // make reservations
-            \App\Models\Reservation::factory()->count(5)->create(['movie_id'=>$scheduledMovie->movie_id]);
+            \App\Models\Reservation::factory()->count(5)->create(['scheduled_movie_id'=>$scheduledMovie->id]);
         });
 
     }
