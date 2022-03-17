@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\movie;
+use App\Models\Movie;
 
+/**
+     * 映画情報取得
+     *
+     */
 class HomeController extends Controller
 {
 
     public function getmovies(Request $request)
     {
-       $movies = movie::select('name','img_pass')->get();
+       $movies = Movie::all();
        return view('home_page',['movies'=>$movies]);
     }
+
+    
 
 }
