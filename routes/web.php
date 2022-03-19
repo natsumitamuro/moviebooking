@@ -22,9 +22,6 @@ Route::get('/reservation', function () {
     return view('reservation');
 })->middleware('auth');
 
-Route::get('/detail', function () {
-    return view('detail_screen');
-});
 
 Route::get('/register', function(){
     return view('register');
@@ -62,4 +59,8 @@ Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
 
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
 
+
 Route::get('/genre/{genreId}',[App\Http\Controllers\GenreController::class,'index'])->name('genre.index');
+
+Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail']);
+
