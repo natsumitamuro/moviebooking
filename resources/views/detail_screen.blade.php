@@ -18,17 +18,16 @@
        
 
         <div class="border-bottom" style="padding:10px;margin:10px;"></div>
-        @foreach($scheduleds as $scheduled)
+        @foreach($schedules as $schedule)
         <div class="row">
             <div class="col-10">
             <div class="border" style="padding:10px;margin:10px;">
                 
-                <p>{{\Carbon\Carbon::parse($scheduled->start)->format('m月d日 G時i分')}}</p>
+                <p>{{\Carbon\Carbon::parse($schedule->start)->format('m月d日 G時i分')}}</p>
                 
                 <!-- 予約ボタン -->
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="">
-                        <button class="btn btn-secondary" type="button">予約</button>
+                    <a href="/scheuled_movie/{{$schedule->id}}">予約
                     </a>
                 </div>
             </div>

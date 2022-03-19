@@ -18,9 +18,9 @@ class DetailController extends Controller
     public function detail($movie_id)
     {
        $movie = Movie::find($movie_id);
-       $scheduleds = $movie->scheduledMovies->sortBy('start');
+       $schedules = $movie->scheduledMovies->sortBy('start');
 
-       return view('detail_screen',compact('movie','scheduleds'));
+       return view('detail_screen',compact('movie','schedules'));
     }
 
 }
