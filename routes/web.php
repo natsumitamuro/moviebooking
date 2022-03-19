@@ -63,4 +63,4 @@ Route::get('/genre/{genreId}',[App\Http\Controllers\GenreController::class,'inde
 
 Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail']);
 
-
+Route::get('/scheuled_movie/{id}', [App\Http\Controllers\DetailController::class,'detail']);
