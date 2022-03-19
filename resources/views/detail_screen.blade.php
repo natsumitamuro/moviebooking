@@ -23,7 +23,7 @@
             <div class="col-10">
             <div class="border" style="padding:10px;margin:10px;">
                 
-                <p>{{\Carbon\Carbon::parse($scheduled->start)->format('m月d日 G時i分 ')}}</p>
+                <p>{{\Carbon\Carbon::parse($scheduled->start)->format('m月d日 G時i分')}}</p>
                 
                 <!-- 予約ボタン -->
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
