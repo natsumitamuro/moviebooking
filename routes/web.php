@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,6 @@ Route::get('/reservation', function () {
     return view('reservation');
 })->middleware('auth');
 
-Route::get('/detail', function () {
-    return view('detail_screen');
-});
 
 Route::get('/register', function(){
     return view('register');
@@ -42,6 +40,10 @@ Route::get('/home', function () {
     return view('home_page');
 });
 
+Route::get('/genre/{genreId}', function(){
+    return view('genre_page');
+});
+
 Route::post('/register',[App\Http\Controllers\UserController::class,'register'])->name('register');
 
 Route::get('/register',[App\Http\Controllers\UserController::class,'getRegister'])->name('getRegister');
@@ -54,5 +56,11 @@ Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
 
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
 
+
 Route::get('/',[App\Http\Controllers\HomeController::class,'getmovies'])->name('movies');
+
+Route::get('/genre/{genreId}',[App\Http\Controllers\GenreController::class,'index'])->name('genre.index');
+
+Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail']);
+
 
