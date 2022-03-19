@@ -14,9 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home_page');
-});
 
 Route::get('/reservation', function () {
     return view('reservation');
@@ -60,7 +57,10 @@ Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
 
 
+Route::get('/',[App\Http\Controllers\HomeController::class,'getmovies'])->name('movies');
+
 Route::get('/genre/{genreId}',[App\Http\Controllers\GenreController::class,'index'])->name('genre.index');
 
 Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail']);
+
 
