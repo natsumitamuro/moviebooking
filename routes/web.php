@@ -21,9 +21,6 @@ Route::get('/reservation', function () {
     return view('reservation');
 })->middleware('auth');
 
-Route::get('/detail', function () {
-    return view('detail_screen');
-});
 
 Route::get('/register', function(){
     return view('register');
@@ -56,4 +53,6 @@ Route::post('/edit/{id}',[App\Http\Controllers\UserController::class,'update'])-
 Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
 
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
+
+Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail']);
 
