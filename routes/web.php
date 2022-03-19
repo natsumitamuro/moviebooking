@@ -54,5 +54,5 @@ Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
 
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
 
-Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail']);
+Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail'])->name('detail');
 

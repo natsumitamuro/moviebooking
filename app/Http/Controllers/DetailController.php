@@ -22,14 +22,4 @@ class DetailController extends Controller
        return view('detail_screen',compact('movie','scheduleds'));
     }
 
-    /**
-     * 詳細画面の今日以降の映画を表示
-     
-    *public function scheduled()
-    *{
-        * $scheduled = SchedulesMovie::find();
-        *return $scheduled->hasMany('App\movie','scheduled_movies');
-        
-    *}*/
-     
 }
