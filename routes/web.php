@@ -36,10 +36,6 @@ Route::get('/done', function () {
     return view('done');
 })->middleware('auth');
 
-Route::get('/home', function () {
-    return view('home_page');
-});
-
 Route::get('/genre/{genreId}', function(){
     return view('genre_page');
 });
@@ -55,6 +51,12 @@ Route::post('/edit/{id}',[App\Http\Controllers\UserController::class,'update'])-
 Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
 
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/reservation/{id}',[\App\Http\Controllers\ReservationController::class,'reservation'])->name('getreservation');
+    Route::post('/reservation',[App\Http\Controllers\ReservationController::class,'purchase'])->name('purchase');
+});
+
 
 
 Route::get('/',[App\Http\Controllers\HomeController::class,'getmovies'])->name('movies');

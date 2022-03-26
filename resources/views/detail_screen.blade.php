@@ -32,7 +32,7 @@
                 <p>{{\Carbon\Carbon::parse($schedule->start)->format('m月d日 G時i分')}}</p>     
                 <p>スクリーン{{$schedule->auditorium->name}}</p>
                 <p>{{App\Models\Row::get_seats_count($schedule->auditorium_id)}}席</p>
-
+                
                 @if (App\Models\Reservation::get_reservation_rate($schedule->id,$schedule->auditorium_id) === 100)
                    <p>×</p>
                 @elseif (App\Models\Reservation::get_reservation_rate($schedule->id,$schedule->auditorium_id) >=70)
@@ -43,7 +43,7 @@
             
                 <!-- 予約ボタン -->
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="/scheuled_movie/{{$schedule->id}}" class="btn btn-outline-secondary">予約
+                    <a href="/reservation/{{$schedule->id}}" class="btn btn-outline-secondary">予約
                     </a>
                 </div>
             </div>

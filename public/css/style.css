@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+.seat{
+    height: 50px;
+    width: 30px;
+    margin: 3px;
+    border-radius:7px;
+}
+
+.reserved{
+    background-color: blue;
+}
+
+.seat.selected{
+    background-color: red;
+}
+

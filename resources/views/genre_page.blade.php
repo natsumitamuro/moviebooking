@@ -24,7 +24,7 @@
             <div class="col-5 my-4">
                 <img src="{{ asset('image/'.$movie->image_path) }}" alt="映画の画像" class="border col-7"><br>
                 <b>{{ $movie->name }}</b><br>
-                <a href="/detail">映画の詳細</a><br>
+                <a href="/detail/{{ $movie->id }}">映画の詳細</a><br>
                 <a href="/reservation">予約する</a>
             </div>
             @endforeach
