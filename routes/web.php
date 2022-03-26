@@ -36,10 +36,6 @@ Route::get('/done', function () {
     return view('done');
 })->middleware('auth');
 
-Route::get('/home', function () {
-    return view('home_page');
-});
-
 Route::get('/genre/{genreId}', function(){
     return view('genre_page');
 });

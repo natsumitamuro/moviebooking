@@ -27,7 +27,7 @@
                 
                 <!-- 予約ボタン -->
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="/scheuled_movie/{{$schedule->id}}">予約
+                    <a href="/reservation/{{$schedule->id}}">予約
                     </a>
                 </div>
             </div>

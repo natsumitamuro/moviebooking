@@ -24,7 +24,7 @@ function buyticket(scheduled_movie_id){
     //then 成功だった時
             .then((res) => {
                 if(res.status==200){
-                    window.location.href='/home';
+                    window.location.href='/';
                 }
             })
     //catch 失敗した場合

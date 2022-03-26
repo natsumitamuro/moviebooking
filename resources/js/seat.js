@@ -16,5 +16,3 @@ document.getElementById("target").onclick = function() {
     //要素の取得 → 背景色を変える
     //document.getElementById('target').style.background='pink';
 //});
-
-alert("Hello");
