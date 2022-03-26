@@ -2,6 +2,7 @@
 @section('title','予約画面')
 @include('layouts.sidebar')
 @section('main')
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <div class="container"></div>
     <div class="row justify-content-center">
         <div class="main-header">
@@ -32,177 +33,23 @@
         <div class="screen-box bg-secondary col-6 p-1">
                 <p class="screen-name m-4">SCREEN 1</p>
                 <div class="screen-box-inline p-4">
-                    <table>
+                    <table id="target">
                         <!-- 1列目 -->
+                        <!-- 取得した列を表示 -->
+                        @foreach($seats as $row)
                         <tr>
-                            <td>A</td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td>A</td>
+                            <!-- 取得した席を表示 -->
+                            @foreach($row as $seat)
+                            <!-- in_array($検索する値,検索する対象) -->
+                            @if(in_array ($seat->id,array_column($reservedseats,'seat_id') ))
+                            <td><button type="button" class="seat reserved" ></button></td>
+                            @else
+                            <td><button type="button" name="seat_id" id="{{$seat->id}}" class="seat" onclick="AddClass( {{$seat->id}} )"></button></td>
+                            
+                            @endif
+                            @endforeach
                         </tr>
-                        <!-- 2列目 -->
-                        <tr>
-                            <td>B</td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td>B</td>
-                        </tr>
-                        <!-- 3列目 -->
-                        <tr>
-                            <td>C</td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td>C</td>
-                        </tr>
-                        <!-- 4列目 -->
-                        <tr>
-                            <td>D</td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td>D</td>
-                        </tr>
-                        <!-- 5列目 -->
-                        <tr>
-                            <td>E</td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td>E</td>
-                        </tr>
-                        <!-- 6列目 -->
-                        <tr>
-                            <td>F</td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td>F</td>
-                        </tr>
-                        <!-- 7列目 -->
-                        <tr>
-                            <td>G</td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td>G</td>
-                        </tr>
-                        <!-- 8列目 -->
-                        <tr>
-                            <td>H</td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td>H</td>
-                        </tr>
-                        <!-- 9列目 -->
-                        <tr>
-                            <td>I</td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td>I</td>
-                        </tr>
-                        <!-- 10列目 -->
-                        <tr>
-                            <td>J</td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td><img src="{{ asset('img/seat_1.gif') }}" alt=""></td>
-                            <td>J</td>
-                        </tr>
+                        @endforeach
                     </table>
                 </div>
         </div>
@@ -210,6 +57,9 @@
 
     <!-- 購入ボタン -->
     <div class="row justify-content-center">
-        <button type="button" class="btn btn-outline-secondary col-1 my-4">購入</button>
+        <button id="submit" class="btn btn-outline-secondary col-1 my-4" onclick="buyticket({{ $scheduled_movie_id }})">購入</button>
     </div>
 @endsection  
+@section('script')
+<script src="{{ mix('js/seat.js') }}"></script>
+@endsection

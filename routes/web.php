@@ -56,6 +56,12 @@ Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
 
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
 
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/reservation/{id}',[\App\Http\Controllers\ReservationController::class,'reservation'])->name('getreservation');
+    Route::post('/reservation',[App\Http\Controllers\ReservationController::class,'purchase'])->name('purchase');
+});
+
+
 
 Route::get('/',[App\Http\Controllers\HomeController::class,'getmovies'])->name('movies');
 
