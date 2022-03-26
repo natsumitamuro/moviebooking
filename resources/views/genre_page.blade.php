@@ -28,7 +28,7 @@
                 <a href="/reservation">予約する</a>
             </div>
             @endforeach
-            @else
+        @else
             <div class="col-5 p-3 my-2">
                 <div>該当の映画はありません</div>
             </div>

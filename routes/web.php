@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Client\Request;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 
@@ -24,9 +25,8 @@ Route::get('/register', function(){
     return view('register');
 });
 
-Route::get('/login', function(){
-    return view('login');
-});
+Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
+Route::get('/login',[App\Http\Controllers\LoginController::class,'index']);
 
 Route::get('/edit', function(){
     return view('edit');
@@ -52,8 +52,6 @@ Route::get('/edit/{id}',[App\Http\Controllers\UserController::class,'edit'])->na
 
 Route::post('/edit/{id}',[App\Http\Controllers\UserController::class,'update'])->name('update');
 
-Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
-
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
 
 
@@ -62,5 +60,3 @@ Route::get('/',[App\Http\Controllers\HomeController::class,'getmovies'])->name('
 Route::get('/genre/{genreId}',[App\Http\Controllers\GenreController::class,'index'])->name('genre.index');
 
 Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail']);
-
-
