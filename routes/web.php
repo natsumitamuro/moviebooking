@@ -54,9 +54,17 @@ Route::post('/edit/{id}',[App\Http\Controllers\UserController::class,'update'])-
 
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
 
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/reservation/{id}',[\App\Http\Controllers\ReservationController::class,'reservation'])->name('getreservation');
+    Route::post('/reservation',[App\Http\Controllers\ReservationController::class,'purchase'])->name('purchase');
+});
+
+
 
 Route::get('/',[App\Http\Controllers\HomeController::class,'getmovies'])->name('movies');
 
 Route::get('/genre/{genreId}',[App\Http\Controllers\GenreController::class,'index'])->name('genre.index');
 
 Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail']);
+
+Route::get('/scheuled_movie/{id}', [App\Http\Controllers\DetailController::class,'detail']);
