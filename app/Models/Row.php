@@ -25,4 +25,10 @@ class Row extends Model
         return $this->hasMany('App\Models\Seat');
     }
  
+    // スクリーンの座席数を求める関数
+    public static function get_seats_count($auditorium_id)
+    {
+        $seats_count = Row::where('auditorium_id',$auditorium_id)->sum("seats");
+        return $seats_count;
+    }
 }
