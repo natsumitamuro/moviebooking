@@ -13,7 +13,7 @@ class HomeController extends Controller
      * 映画情報取得
      *
      */
-    public function getmovie(Request $request)
+    public function getmovies(Request $request)
     {
        $movies = Movie::all();
        return view('home_page',['movies'=>$movies]);
