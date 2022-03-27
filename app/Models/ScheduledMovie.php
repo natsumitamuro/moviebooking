@@ -13,16 +13,16 @@ class ScheduledMovie extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['scheduled_movie_id', 'start', 'end', 'auditorium_id', 'price'];
+    protected $fillable = ['movie_id', 'start', 'end', 'auditorium_id', 'price'];
 
     public function movie()
     {
-        return $this->belongsTo('App\Models\Movie');
+        return $this->belongsTo('App\Models\Movie','movie_id');
     }
 
     public function auditorium()
     {
-        return $this->belongsTo('App\Models\Auditorium');
+        return $this->belongsTo('App\Models\Auditorium','auditorium_id');
     }
 
     public function reservations()

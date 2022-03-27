@@ -14,6 +14,7 @@ use App\Models\ScheduledMovie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
+
 class DetailController extends Controller
 
 {

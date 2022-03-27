@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-
+    /**
+     * ログイン機能
+     */
     public function login(Request $request)
     {
         if (Auth::attempt(['email' => $request->post('email'), 'password' => $request->post('password')])) {
@@ -20,6 +22,9 @@ class LoginController extends Controller
         return redirect('/login');
     }
 
+    /**
+     * ログアウト機能
+     */
     public function logout()
     {
 

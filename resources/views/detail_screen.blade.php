@@ -7,12 +7,18 @@
     <div class="row">
 
         <div class="col-sm-6">
-            <img src="{{ asset('/image/' . $movie->image_path) }}" alt="映画の画像" class="border">
+            <img src="/image/{{ $movie->image_path }}" alt="映画の画像" class="border">
         </div>
         <div class="col-sm-6">
             <p>{{ $movie->name }}</p>
 
             <p>{{ $movie->description }}</p>
+
+            <div>
+                @foreach ($movie->genres as $genre)
+                    <p>{{ $genre->name }}</p>
+                @endforeach
+            </div>
 
             <p>上映時間 :{{ $movie->minutes }}分</p>
         </div>
@@ -44,13 +50,21 @@
                     <div class="col-10">
                         <div class="border" style="padding:10px;margin:10px;">
 
-                            <p>{{ \Carbon\Carbon::parse($scheduled->start)->format('m月d日 G時i分') }}</p>
+                            <p>{{ \Carbon\Carbon::parse($schedule->start)->format('m月d日 G時i分') }}</p>
+                            <p>スクリーン{{ $schedule->auditorium->name }}</p>
+                            <p>{{ App\Models\Row::get_seats_count($schedule->auditorium_id) }}席</p>
+
+                            @if (App\Models\Reservation::get_reservation_rate($schedule->id, $schedule->auditorium_id) === 100)
+                                <p>×</p>
+                            @elseif (App\Models\Reservation::get_reservation_rate($schedule->id, $schedule->auditorium_id) >= 70)
+                                <p>△</p>
+                            @else
+                                <p>〇</p>
+                            @endif
 
                             <!-- 予約ボタン -->
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href="">
-                                    <button class="btn btn-secondary" type="button">予約</button>
-                                </a>
+                                <a href="/reservation/{{ $schedule->id }}" class="btn btn-outline-secondary">予約</a>
                             </div>
                         </div>
                     </div>
@@ -93,7 +107,7 @@
                                         <label>件名</label>
                                         @if ($errors->has('title'))
                                             @foreach ($errors->get('title') as $message)
-                                            <br><small class="text-danger">{{ $message }}</small>
+                                                <br><small class="text-danger">{{ $message }}</small>
                                             @endforeach
                                         @endif
                                         <textarea name="title" class="form-control" rows="1">{{ old('title') }}</textarea>
@@ -101,7 +115,7 @@
                                         <label>本文</label>
                                         @if ($errors->has('review'))
                                             @foreach ($errors->get('review') as $message)
-                                            <br><small class="text-danger">{{ $message }}</small>
+                                                <br><small class="text-danger">{{ $message }}</small>
                                             @endforeach
                                         @endif
                                         <textarea name="review" class="form-control" rows="3">{{ old('review') }}</textarea>
@@ -145,6 +159,5 @@
 
         </div>
     </div>
-
 
 @endsection
