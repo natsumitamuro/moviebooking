@@ -11,6 +11,12 @@
                 <p>{{ $movie->name }}</p>    
                 
                 <p>{{ $movie->description }}</p>    
+
+                <div>
+                    @foreach($movie->genres as $genre)
+                        <p>{{ $genre->name }}</p>
+                    @endforeach
+                </div>
                 
                 <p>上映時間 :{{ $movie->minutes }}分</p>    
             </div>
@@ -23,11 +29,21 @@
             <div class="col-10">
             <div class="border" style="padding:10px;margin:10px;">
                 
-                <p>{{\Carbon\Carbon::parse($schedule->start)->format('m月d日 G時i分')}}</p>
+                <p>{{\Carbon\Carbon::parse($schedule->start)->format('m月d日 G時i分')}}</p>     
+                <p>スクリーン{{$schedule->auditorium->name}}</p>
+                <p>{{App\Models\Row::get_seats_count($schedule->auditorium_id)}}席</p>
                 
+                @if (App\Models\Reservation::get_reservation_rate($schedule->id,$schedule->auditorium_id) === 100)
+                   <p>×</p>
+                @elseif (App\Models\Reservation::get_reservation_rate($schedule->id,$schedule->auditorium_id) >=70)
+                    <p>△</p>
+                @else
+                    <p>〇</p>
+                @endif
+            
                 <!-- 予約ボタン -->
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="/scheuled_movie/{{$schedule->id}}">予約
+                    <a href="/reservation/{{$schedule->id}}" class="btn btn-outline-secondary">予約
                     </a>
                 </div>
             </div>

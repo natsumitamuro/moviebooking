@@ -8,6 +8,7 @@ use App\Models\Movie;
 
 use App\Models\ScheduledMovie;
 
+
 class DetailController extends Controller
 
     /**
@@ -18,8 +19,9 @@ class DetailController extends Controller
     public function detail($movie_id)
     {
        $movie = Movie::find($movie_id);
-       $schedules = $movie->scheduledMovies->sortBy('start');
 
+       $schedules = $movie->scheduledMovies->sortBy('start');
+       
        return view('detail_screen',compact('movie','schedules'));
     }
 
