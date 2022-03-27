@@ -11,6 +11,8 @@ use App\Models\Review;
 use App\Models\User;
 
 use App\Models\ScheduledMovie;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class DetailController extends Controller
 
@@ -26,6 +28,37 @@ class DetailController extends Controller
       $movie = Movie::find($movie_id);
       $scheduleds = $movie->scheduledMovies->sortBy('start');
       $movie_reviews = Review::where('movie_id', $movie_id)->get()->sortByDesc('created_at');
-      return view('detail_screen', compact('movie', 'scheduleds', 'movie_reviews',));
+      if ($movie_reviews->contains('user_id', '==', Auth::id())) {
+         $can_review = false;
+      } else {
+         $can_review = true;
+      };
+      return view('detail_screen', compact('movie', 'scheduleds', 'movie_reviews', 'can_review'));
+   }
+
+   public function review(Request $request)
+   {
+      $request->validate([
+         'stars' => 'required',
+         'title' => 'required|max:30',
+         'review' => 'required|min:40'
+      ],
+       [
+         'stars.required' => '※選択は必須です',   
+         'title.required' => '※件名は必須項目です。',
+         'title.max' => '※30文字以内で入力してください。',
+         'review.required'  => '※レビューは必須項目です。',
+         'review.min' => '※40文字以上入力してください。',
+
+       ]);
+
+      $review = new Review();
+      $review->user_id = Auth::id();
+      $review->movie_id = $request->movie_id;
+      $review->title = $request->title;
+      $review->stars = $request->stars;
+      $review->review = $request->review;
+      $review->save();
+      return redirect()->route('detail.id', $request->movie_id);
    }
 }

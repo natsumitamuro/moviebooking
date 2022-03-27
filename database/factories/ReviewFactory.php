@@ -21,6 +21,8 @@ class ReviewFactory extends Factory
         return [
             'user_id'=>User::inRandomOrder()->first()->id,
             'movie_id'=>Movie::inRandomOrder()->first()->id,
+            'stars'=> $this->faker->numberBetween(1,5),
+            'title'=> $this->faker->sentence(),
             'review' => $this->faker->realText(200,2),
             'created_at' => $this->faker->dateTimeThisMonth(),
         ];

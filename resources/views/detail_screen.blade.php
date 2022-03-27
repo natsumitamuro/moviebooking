@@ -2,6 +2,8 @@
 @section('title', '詳細画面')
 @include('layouts.sidebar')
 @section('main')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
     <div class="row">
 
         <div class="col-sm-6">
@@ -18,19 +20,25 @@
 
 
     <div class="border-bottom" style="padding:10px;margin:10px;"></div>
-
     <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-schedule-tab" data-toggle="tab" href="#nav-home" role="tab"
-                aria-controls="nav-home" aria-selected="true">上映スケジュール</a>
-            <a class="nav-item nav-link" id="nav-movie-review" data-toggle="tab" href="#nav-profile" role="tab"
-                aria-controls="nav-profile" aria-selected="false">レビュー</a>
-        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                    role="tab" aria-controls="home" aria-selected="true">
+                    スケジュール
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false">
+                    レビュー
+                </button>
+            </li>
+        </ul>
     </nav>
 
-    <div class="tab-content" id="nav-tabContent">
-        <!-- 上映スケジュールタブの内容 -->
-        <div class="tab-pane fade show active" id="nav-movie-review" role="tabpanel" aria-labelledby="nav-schedule-tab">
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             @foreach ($scheduleds as $scheduled)
                 <div class="row">
                     <div class="col-10">
@@ -48,53 +56,95 @@
                     </div>
                 </div>
             @endforeach
-        </div>
 
-        <!-- レビュータブの内容 -->
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            {{-- ログイン済みユーザーの場合、レビューを記入するFormを表示 --}}
             @auth
-                {{-- ログイン済みユーザーの場合 --}}
-                <div class="border col-7 p-2">
-                    <br>
-                    <h4>レビューを書く</h4>
-                    <br>
-                    <div class="row">
-                        <div class="col-md">
-                            <form>
-                                <div class="form-group">
-                                    <label>本文</label>
-                                    <textarea class="form-control" rows="3"></textarea>
-                                    <br>
-                                </div>
-                            </form>
+                {{-- 記入済みかチェック。すでに記入しているユーザーの場合、記入済のメッセージを表示 --}}
+                @if ($can_review)
+                    <div class="border col-7 p-2">
+                        <br>
+                        <h4>レビューを書く</h4>
+                        <br>
+                        <div class="row">
+                            <div class="col-md">
+                                <form action="{{ route('post.review') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="movie_id" value="{{ $movie->id }}">
+                                    <div class="form-group">
+                                        <label>評価</label>
+                                        @if ($errors->has('stars'))
+                                            <br><small class="text-danger">{{ $errors->first('stars') }}</small>
+                                        @endif
+                                        <div class="rate-form">
+                                            <input id="star5" type="radio" name="stars" value=5>
+                                            <label for="star5">★</label>
+                                            <input id="star4" type="radio" name="stars" value=4>
+                                            <label for="star4">★</label>
+                                            <input id="star3" type="radio" name="stars" value=3>
+                                            <label for="star3">★</label>
+                                            <input id="star2" type="radio" name="stars" value=2>
+                                            <label for="star2">★</label>
+                                            <input id="star1" type="radio" name="stars" value=1>
+                                            <label for="star1">★</label>
+                                        </div><br>
+
+                                        <label>件名</label>
+                                        @if ($errors->has('title'))
+                                            @foreach ($errors->get('title') as $message)
+                                            <br><small class="text-danger">{{ $message }}</small>
+                                            @endforeach
+                                        @endif
+                                        <textarea name="title" class="form-control" rows="1">{{ old('title') }}</textarea>
+
+                                        <label>本文</label>
+                                        @if ($errors->has('review'))
+                                            @foreach ($errors->get('review') as $message)
+                                            <br><small class="text-danger">{{ $message }}</small>
+                                            @endforeach
+                                        @endif
+                                        <textarea name="review" class="form-control" rows="3">{{ old('review') }}</textarea>
+                                        <br>
+                                    </div>
+                                    <button type="submit" class="btn btn-secondary">投稿</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="row center-block text-center">
-                        <div class="col-1">
-                        </div>
-                        <div class="col-5 center-block">
-                            <button type="button" class="btn btn-secondary">投稿</button>
-                        </div>
-                    </div>
-                </div>
+                @else
+                    <div>すでにレビュー記入済みです</div>
+                @endif
             @else
-                {{-- ログインしていないユーザーの場合 --}}
+                {{-- ログインしていないユーザーの場合、ログイン画面でログインしたあとに詳細ページにリダイレクト --}}
                 <br>
                 <a href="/login?redirect=detail/{{ $movie->id }}">レビューを書く</a>
             @endauth
 
+            {{-- レビューの表示 --}}
             @foreach ($movie_reviews as $movie_review)
                 <div class="row">
                     <div class="col-10">
                         <div class="border" style="padding:10px;margin:10px;">
-                            <p>{{ $movie_review->user->name }}</p>
-                            <p class="small text-muted">{{ $movie_review->created_at->format('m月d日 G時i分')}}</p>
+                            <img class="" src="{{ asset('/img/user_icon.jpeg') }}" alt="ユーザーアイコンの画像"><span
+                                class="ms-3">{{ $movie_review->user->name }}</span>
+                            <div class="rate-review">
+                                @for ($a = 0; $a < $movie_review->stars; $a++)
+                                    <input disabled type="radio">
+                                    <label>★</label>
+                                @endfor
+                            </div>
+                            <br>
+                            <p class="fw-bold">{{ $movie_review->title }}</p>
+                            <p class="small text-muted">{{ $movie_review->created_at->format('m月d日 G時i分') }}</p>
                             <p>{{ $movie_review->review }}</p>
                         </div>
                     </div>
                 </div>
             @endforeach
+
         </div>
     </div>
+
 
 @endsection

@@ -61,6 +61,8 @@ Route::get('/',[App\Http\Controllers\HomeController::class,'getmovies'])->name('
 
 Route::get('/genre/{genreId}',[App\Http\Controllers\GenreController::class,'index'])->name('genre.index');
 
-Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail']);
+Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail'])->name('detail.id');
 
 Route::get('/scheuled_movie/{id}', [App\Http\Controllers\DetailController::class,'detail']);
+
+Route::post('product/review', [App\Http\Controllers\DetailController::class,'review'])->name('post.review');
