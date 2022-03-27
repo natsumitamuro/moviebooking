@@ -36,10 +36,6 @@ Route::get('/done', function () {
     return view('done');
 })->middleware('auth');
 
-Route::get('/home', function () {
-    return view('home_page');
-});
-
 Route::get('/genre/{genreId}', function(){
     return view('genre_page');
 });
@@ -56,11 +52,12 @@ Route::post('/login',[App\Http\Controllers\LoginController::class,'login']);
 
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
 
-
-Route::get('/',[App\Http\Controllers\HomeController::class,'getmovies'])->name('movies');
+Route::get('/',[App\Http\Controllers\HomeController::class,'getmovie'])->name('getmovie');
 
 Route::get('/genre/{genreId}',[App\Http\Controllers\GenreController::class,'index'])->name('genre.index');
 
 Route::get('/detail/{id}', [App\Http\Controllers\DetailController::class,'detail']);
 
 Route::get('/scheuled_movie/{id}', [App\Http\Controllers\DetailController::class,'detail']);
+
+Route::get('/booking/{id}', [App\Http\Controllers\BookingController::class,'booking'])->name('booking');
