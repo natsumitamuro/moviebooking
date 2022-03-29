@@ -60,6 +60,6 @@ class DetailController extends Controller
       $review->stars = $request->stars;
       $review->review = $request->review;
       $review->save();
-      return redirect()->route('detail.id', $request->movie_id);
+      return redirect()->route('detail.id', $request->movie_id)->with('active','review');
    }
 }
