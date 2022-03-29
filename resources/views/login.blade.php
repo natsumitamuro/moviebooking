@@ -7,6 +7,7 @@
 
         <form class="" method="POST" action="/login">
         @csrf
+            <input type="hidden" name="redirect" value="{{ $redirect }}">
             <div class="col-md-3 mx-auto">
                 <p class="mb-3">メールアドレス</p>
                 <input type="text" class="form-control mb-3" name="email" required>
