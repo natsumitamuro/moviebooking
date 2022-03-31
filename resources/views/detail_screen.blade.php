@@ -4,10 +4,12 @@
 @section('main')
         <div class="row">
         
-            <div class="col-sm-6">
-                <img src="{{ asset('/image/'.$movie->image_path) }}" alt="映画の画像" class="border">
+            <div class="col">
+                <div class="text-center">
+                    <img src="{{ asset('/image/'.$movie->image_path) }}" alt="映画の画像" class="border">
+                </div>
             </div> 
-            <div class="col-sm-6">
+            <div class="col">
                 <p>{{ $movie->name }}</p>    
                 
                 <p>{{ $movie->description }}</p>    
@@ -27,15 +29,16 @@
         @foreach($schedules as $schedule)
         <div class="row">
             <div class="col-10">
+                
             <div class="border" style="padding:10px;margin:10px;">
                 
                 <p>{{\Carbon\Carbon::parse($schedule->start)->format('m月d日 G時i分')}}</p>     
                 <p>スクリーン{{$schedule->auditorium->name}}</p>
                 <p>{{App\Models\Row::get_seats_count($schedule->auditorium_id)}}席</p>
                 
-                @if (App\Models\Reservation::get_reservation_rate($schedule->id,$schedule->auditorium_id) === 100)
+                @if (App\Models\Reservation::get_reservation_rate($schedule->auditorium_id,$schedule->id) === 100)
                    <p>×</p>
-                @elseif (App\Models\Reservation::get_reservation_rate($schedule->id,$schedule->auditorium_id) >=70)
+                @elseif (App\Models\Reservation::get_reservation_rate($schedule->auditorium_id,$schedule->id) >=70)
                     <p>△</p>
                 @else
                     <p>〇</p>

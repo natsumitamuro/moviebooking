@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function getRegister()
     {
-        return view('register');
+        return view('register','sidebar');
     }
 
 
