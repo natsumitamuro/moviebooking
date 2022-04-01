@@ -4,13 +4,13 @@
 @section('main')
         <div class="row">
         
-            <div class="col">
+            <div class="col" style="padding-top: 30px;">
                 <div class="text-center">
                     <img src="{{ asset('/image/'.$movie->image_path) }}" alt="映画の画像" class="border">
                 </div>
             </div> 
-            <div class="col">
-                <p>{{ $movie->name }}</p>    
+            <div class="col" style="padding-top: 30px;">
+                <h4>{{ $movie->name }}</h4>    
                 
                 <p>{{ $movie->description }}</p>    
 
