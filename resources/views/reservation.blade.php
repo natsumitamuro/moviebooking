@@ -22,8 +22,9 @@
         <div class="col-6 mb-4">
             <p class="">アイコン説明</p>
             <ul class="list-group list-group-horizontal">
-                <li class="list-group-item flex-fill"><img src="{{ asset('img/seat_1.gif') }}" alt=""> 空席</li>
-                <li class="list-group-item flex-fill"><img src="{{ asset('img/seat_2.gif') }}" alt=""> 購入済み</li>
+                <li class="list-group-item flex-fill"><button class="seat"></button> 空席</li>
+                <li class="list-group-item flex-fill"><button class="seat reserved"></button> 購入済み</li>
+                <li class="list-group-item flex-fill"><button class="seat selected"></button> 選択した席</li>
             </ul>
         </div>
     </div>
