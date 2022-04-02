@@ -50,13 +50,11 @@ Route::post('/edit/{id}',[App\Http\Controllers\UserController::class,'update'])-
 
 Route::get('/logout',[App\Http\Controllers\LoginController::class,'logout']);
 
-Route::get('/',[App\Http\Controllers\HomeController::class,'getmovie'])->name('getmovie');
+
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/reservation/{id}',[\App\Http\Controllers\ReservationController::class,'reservation'])->name('getreservation');
     Route::post('/reservation',[App\Http\Controllers\ReservationController::class,'purchase'])->name('purchase');
 });
-
-
 
 Route::get('/',[App\Http\Controllers\HomeController::class,'getmovies'])->name('movies');
 

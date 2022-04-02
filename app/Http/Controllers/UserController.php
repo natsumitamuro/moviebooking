@@ -74,7 +74,7 @@ class UserController extends Controller
         $user->save();
 
         // ホーム画面へリダイレクト
-        return redirect('/home_page');
+        return redirect('/');
     }
 
 }
