@@ -20,9 +20,10 @@ list($ranking1,$ranking2,$ranking3)=$rankings->ranking();
       </a>
     </li>
     <li>
-      <div class="fixed-bottom col-sm-2 col-xs-2">
-        <h3>映画ランキング</h3>
         <table class="table">
+          <tr>
+            <th colspan="3">ランキング</th>
+          </tr>
           <tr>
             <td style="color:gold">
               <font size="6">1
@@ -45,7 +46,6 @@ list($ranking1,$ranking2,$ranking3)=$rankings->ranking();
             <th>{{ $ranking3->count }}</th>
           </tr>
         </table>
-      </div>
     </li>
   </ul>
   <hr>
@@ -58,7 +58,6 @@ list($ranking1,$ranking2,$ranking3)=$rankings->ranking();
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownLink1">
       <li><a class="dropdown-item" href="/edit/{{ Auth::user()->id }}">会員登録変更</a></li>
-      <li><a class="dropdown-item" href="#">マイページ</a></li>
       <li>
         <hr class="dropdown-divider">
       </li>
