@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+.seat{
+    height: 50px;
+    width: 30px;
+    margin: 3px;
+    border-radius:7px;
+}
+
+.reserved{
+    background-color: blue;
+}
+
+.seat.selected{
+    background-color: red;
+}
+
+
+.rate-form {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .rate-form input[type=radio] {
+    display: none;
+  }
+  .rate-form label {
+    position: relative;
+    padding: 0 5px;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 35px;
+  }
+  .rate-form label:hover {
+    color: #ffcc00;
+  }
+  .rate-form label:hover ~ label {
+    color: #ffcc00;
+  }
+  .rate-form input[type=radio]:checked ~ label {
+    color: #ffcc00;
+  }
+
+  .rate-review {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .rate-review input[type=radio] {
+    display: none;
+  }
+  .rate-review label {
+    position: relative;
+    padding: 0 5px;
+    color: #ffcc00;
+    font-size: 20px;
+  }
+
+
+.carousel {
+  height: 300px;
+  width: 600px;
+  margin: 0 auto;
+}
+.carousel .carousel-item img{
+  height: 300px;
+  }
+  
+.seat-order{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    background-color: rgba(98, 98, 98, 0.8);
+}
+
+li{
+  display: inline;
+}
+
+.selectedseat{
+  font-size: large;
+  color:white;
+}

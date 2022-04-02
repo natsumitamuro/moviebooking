@@ -1,0 +1,32 @@
+img {
+    width:15px;
+    height: 22px;
+}
+
+ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+.main-header {
+    background: #000000;
+    color:lightgrey;
+}
+
+.screen-box{
+    border:solid 6px #393f4c;
+}
+
+p.screen-name{
+    text-align: center;
+    color: white;
+    border: solid white;
+    margin: 20px 20px 20px 20px;
+}
+
+td{
+    text-align: center;
+    color: #a9a9a9;
+
+}
+
