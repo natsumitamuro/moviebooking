@@ -43,6 +43,9 @@ class Reservation extends Model
     {               
         $reserved_seats = Reservation::where('scheduled_movie_id',$scheduled_movie_id)->count("scheduled_movie_id");
         $seats_count = Row::where('auditorium_id',$auditorium_id)->sum("seats");
+        if($seats_count == 0){
+            return 0;
+        }
         $reserved_rate = ($reserved_seats / $seats_count) *100;
         return $reserved_rate;
     }
