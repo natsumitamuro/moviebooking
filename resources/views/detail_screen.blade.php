@@ -74,7 +74,7 @@
         @endforeach
 
     </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="tab-pane fade {{ session('active') || $errors->any()? 'active show':'' }}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         {{-- ログイン済みユーザーの場合、レビューを記入するFormを表示 --}}
         @auth
         {{-- 記入済みかチェック。すでに記入しているユーザーの場合、記入済のメッセージを表示 --}}
