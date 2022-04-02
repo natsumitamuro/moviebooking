@@ -16,7 +16,8 @@ class HomeController extends Controller
     public function getmovies(Request $request)
     {
        $movies = Movie::all();
-       return view('home_page',['movies'=>$movies]);
+
+       return view('home_page',compact('movies',));
     }
 
 }
