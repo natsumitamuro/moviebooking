@@ -34,16 +34,16 @@ class Reservation extends Model
     // 購入された座席数を求める関数
     public static function get_reserved_seats($scheduled_movie_id)
     {
-        $reserved_seats = Reservation::where('scheduled_movie_id',$scheduled_movie_id)->sum("scheduled_movie_id");
+        $reserved_seats = Reservation::where('scheduled_movie_id',$scheduled_movie_id)->count("scheduled_movie_id");
         return $reserved_seats;
     }
 
     // 空席率を求める関数
-    public static function get_reservation_rate($scheduled_movie_id,$auditorium_id)
+    public static function get_reservation_rate($auditorium_id,$scheduled_movie_id)
     {               
-        $reserved_seats = Reservation::where('scheduled_movie_id',$scheduled_movie_id)->sum("scheduled_movie_id");
+        $reserved_seats = Reservation::where('scheduled_movie_id',$scheduled_movie_id)->count("scheduled_movie_id");
         $seats_count = Row::where('auditorium_id',$auditorium_id)->sum("seats");
-         $reserved_rate = $reserved_seats / $seats_count *100;
-         return $reserved_rate;
+        $reserved_rate = ($reserved_seats / $seats_count) *100;
+        return $reserved_rate;
     }
 }
