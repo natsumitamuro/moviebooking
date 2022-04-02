@@ -6,7 +6,7 @@
                 
                 @auth
                     <b>ユーザー名</b><br>
-                    <a href="/edit">プロフィール編集画面</a><br>
+                    <a href="/edit/{{ \Auth::user()->id }}">プロフィール編集画面</a><br>
                     <a href="/booking/{{ \Auth::user()->id }}">予約一覧</a><br>
                     <a href="/logout">ログアウト</a>
                 @else
