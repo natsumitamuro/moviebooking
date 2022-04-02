@@ -58,6 +58,7 @@ list($ranking1,$ranking2,$ranking3)=$rankings->ranking();
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownLink1">
       <li><a class="dropdown-item" href="/edit/{{ Auth::user()->id }}">会員登録変更</a></li>
+      <li><a class="dropdown-item" href="/booking/{{ \Auth::user()->id }}">予約一覧</a></li>
       <li>
         <hr class="dropdown-divider">
       </li>
