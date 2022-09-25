@@ -9,3 +9,4 @@
 コマンド :  
 php artisan migrate:fresh --seed  
 テーブルとテストデータを同時にマイグレーションできるコマンドです。
+# moviebooking
